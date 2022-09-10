@@ -56,9 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
    * Navbar links active state on scroll
    */
    
-   window.onload= get()
+window.onload= get()
    
-   function get(){
+  function get(){
 
 var ref = firebase.database().ref("data");
 
@@ -98,8 +98,14 @@ var link= datas.link;
  console.log(i)
 
     
-var htttml = "<div class='col-xl-4 col-md-6 portfolio-item filter-product'><div class='portfolio-wrap'><div class='portfolio-info'><h4>"+title+"</h4><p>"+disc+"</p><br><a href='"+link+"'><h6>"+link+"</h6></a></div></div></div>"
-document.getElementById("portfolio").innerHTML += htttml
+var htttml = "<div id='cont-"+i+"' class='col-xl-4 col-md-6 portfolio-item filter-product'><div class='portfolio-wrap'><div class='portfolio-info'><h4>"+title+"</h4><p>"+disc+"</p><br><a href='"+link+"'><h6>"+link+"</h6></a></div></div>"
+document.getElementById("portfolio-port").innerHTML += htttml
+
+let width = screen.width;
+if (width < 370) {
+   width = width * 1.5
+}
+document.getElementById("portfolio-port").style.paddingBottom = width / number +"em"
 
  }
  )}
