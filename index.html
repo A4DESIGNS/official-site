@@ -32,6 +32,7 @@
     <!-- Google Ads -->
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3855762561433918" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -516,9 +517,9 @@
                             <!-- End Info Item -->
                         </div>
                     </div>
-                    <!--
+                    
                     <div class="col-lg-8">
-                        <form action="assets/php/email.php" method="post" role="form" class="php-email-form">
+                        <form  method="POST" id="submit-form" role="form" class="php-email-form">
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -535,13 +536,13 @@
                             </div>
                             <div class="my-3">
                                 <div class="loading">Loading</div>
-                                <div class="error-message"></div>
+                                
                                 <div class="sent-message">Your message has been sent. Thank you!</div>
                             </div>
                             <div class="text-center"><button type="submit">Send Message</button></div>
                         </form>
                     </div>
-                      End Contact Form -->
+                     <!-- End Contact Form -->
                     <div class="col-lg-4">
                         <!-- At Contact -->
                         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3855762561433918" data-ad-slot="3180537117" data-ad-format="auto" data-full-width-responsive="true">
@@ -651,10 +652,29 @@
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+    
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-
+<script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbwe-_8ZEAjESnW0bDrI5_eeal436z3bBg6CnSwWJo1Zr07z8CNvDepuYZlObiqn04E/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                  
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
